@@ -2,7 +2,7 @@ require 'tile'
 
 Game = class('Game')
 
-local PADDING = 5 -- Padding between tiles
+local TILE_PADDING = 5
 
 function Game:initialize(gridH, gridW)
   self.score = 0
@@ -30,13 +30,33 @@ function Game:populateGrid()
 end
 
 function Game:draw()
+  -- Draw top bar
+
+  -- Draw grid
   local size = Tile.static.SIZE
   for y, row in pairs(self.grid) do
     for x, tile in pairs(row) do
-      tile.x = x * (size + PADDING)
-      tile.y = y * (size + PADDING)
+      tile.x = x * (size + TILE_PADDING)
+      tile.y = y * (size + TILE_PADDING)
       tile:drawTile()
     end
+  end
+end
+
+function love.mousepressed(x, y, button, istouch)
+  -- use left click
+  if button == 1 then
+    -- check which (if any) tile was clicked
+    for _, row in pairs(Ms.grid) do
+      for __, tile in pairs(row) do
+        if tile:isClicked(x, y) then
+          tile.hidden = false
+          -- TODO: Check if this return exits both loops
+          return
+        end
+      end
+    end
+
   end
 end
 
