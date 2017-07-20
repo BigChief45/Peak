@@ -2,7 +2,7 @@ require 'tile'
 
 Game = class('Game')
 
-local PADDING = 5
+local PADDING = 5 -- Padding between tiles
 
 function Game:initialize(gridH, gridW)
   self.score = 0
@@ -33,7 +33,9 @@ function Game:draw()
   local size = Tile.static.SIZE
   for y, row in pairs(self.grid) do
     for x, tile in pairs(row) do
-      tile:drawTile(x * (size + PADDING), y * (size + PADDING))
+      tile.x = x * (size + PADDING)
+      tile.y = y * (size + PADDING)
+      tile:drawTile()
     end
   end
 end

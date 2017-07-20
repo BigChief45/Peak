@@ -12,7 +12,7 @@ function Tile:initialize(answer)
   self.y = 0
 end
 
-function Tile:drawTile(x, y)
+function Tile:drawTile()
   local size = Tile.static.SIZE
   love.graphics.setColor(65, 95, 121) -- grayish blue
 
@@ -24,7 +24,7 @@ function Tile:drawTile(x, y)
     end
   end
 
-  love.graphics.rectangle('fill', x, y, size, size)
+  love.graphics.rectangle('fill', self.x, self.y, size, size)
 
   resetColor()
 end
