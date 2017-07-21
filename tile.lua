@@ -6,7 +6,7 @@ local HIDDEN_COLOR = {65, 95, 121}
 local MISTAKE_COLOR = {214, 6, 72}
 
 function Tile:initialize(answer)
-  self.hidden = true
+  self.revealed = false
 
   -- answer means that the tile must be found by the player
   self.answerTile = answer
@@ -19,7 +19,7 @@ function Tile:drawTile()
   local size = Tile.static.SIZE
   love.graphics.setColor(HIDDEN_COLOR) -- grayish blue
 
-  if not self.hidden then
+  if self.revealed then
     if self.answerTile then
       love.graphics.setColor(CORRECT_COLOR) -- green
     else
