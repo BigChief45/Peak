@@ -1,3 +1,4 @@
+require 'topbar'
 require 'tile'
 
 Game = class('Game')
@@ -6,6 +7,7 @@ local TILE_PADDING = 5
 
 local BG_COLOR = {36, 52, 85}
 local bgImage = love.graphics.newImage('img/bg/subtle_concrete.png')
+local GRID_BG_COLOR = {0, 0, 51}
 
 local MAX_TRIES = 3
 
@@ -20,6 +22,8 @@ function Game:initialize(gridH, gridW)
   self.gridW = gridW
   self.gridH = gridH
   self.grid = {}
+
+  self.topbar = Topbar:new(self)
 
   self:populateGrid()
 end
@@ -68,8 +72,13 @@ end
 
 function Game:draw()
   -- Draw top bar
+  self.topbar:draw()
 
   -- Draw grid
+  love.graphics.setColor(GRID_BG_COLOR)
+  love.graphics.rectangle('fill', 0, 64, love.graphics.getWidth(),
+    (self.gridH * Tile.static.SIZE) + TILE_PADDING * (self.gridH + 1))
+
   local size = Tile.static.SIZE
   for y, row in pairs(self.grid) do
     for x, tile in pairs(row) do

@@ -3,8 +3,9 @@ require 'utils'
 require 'game'
 
 function love.load()
+  love.graphics.setNewFont(15)
   math.randomseed(os.time())
-  love.graphics.setBackgroundColor(0, 0, 51)
+  love.graphics.setBackgroundColor(36, 52, 85)
 
   -- Start Memory sweep game (height x width)
   Ms = Game:new(math.random(3, 5), math.random(3, 5))
