@@ -4,5 +4,5 @@ function love.conf(t)
 
   t.title = 'Peak'
 
-  t.version = '0.1.0'
+  t.version = '0.10.2'
 end
