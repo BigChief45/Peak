@@ -3,10 +3,11 @@ require 'utils'
 require 'game'
 
 function love.load()
+  math.randomseed(os.time())
   love.graphics.setBackgroundColor(0, 0, 51)
 
-  -- Start Memory sweep game 5x5
-  Ms = Game:new(5, 5)
+  -- Start Memory sweep game
+  Ms = Game:new(math.random(5), 5)
 end
 
 function love.update(dt)
