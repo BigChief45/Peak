@@ -10,12 +10,12 @@ function love.load()
 end
 
 function love.update(dt)
-  Ms.revealCooldown = Ms.revealCooldown + dt
+  Ms.revealTimer = Ms.revealTimer + dt
 
-  if Ms.revealCooldown >= 4 then
+  if Ms.revealTimer >= 4 then
     Ms:revealGrid(false)
     Ms:start()
-  elseif Ms.revealCooldown >= 1 then
+  elseif Ms.revealTimer >= 1 then
     Ms:revealGrid(true)
   end
 end

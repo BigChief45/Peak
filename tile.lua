@@ -1,6 +1,8 @@
 Tile = class('Tile')
 
 Tile.static.SIZE = 64
+Tile.static.selectTileSound = love.audio.newSource('sound/select_tile.wav')
+
 local CORRECT_COLOR = {0, 255, 128}
 local HIDDEN_COLOR = {65, 95, 121}
 local MISTAKE_COLOR = {214, 6, 72}
@@ -29,7 +31,7 @@ function Tile:drawTile()
 
   love.graphics.rectangle('fill', self.x, self.y, size, size)
 
-  resetColor()
+  --resetColor()
 end
 
 function Tile:isClicked(mouseX, mouseY)

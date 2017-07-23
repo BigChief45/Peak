@@ -9,7 +9,7 @@ local bgImage = love.graphics.newImage('img/bg/subtle_concrete.png')
 
 function Game:initialize(gridH, gridW)
   self.score = 0
-  self.revealCooldown = 0
+  self.revealTimer = 0
   self.started = false
 
   self.gridW = gridW
@@ -73,6 +73,7 @@ function love.mousepressed(x, y, button, istouch)
     for _, row in pairs(Ms.grid) do
       for __, tile in pairs(row) do
         if tile:isClicked(x, y) then
+          Tile.static.selectTileSound:play()
           tile.revealed = true
           -- TODO: Check if this return exits both loops
           return
