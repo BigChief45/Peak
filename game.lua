@@ -3,24 +3,23 @@ require 'tile'
 Game = class('Game')
 
 local TILE_PADDING = 5
-local MAX_COOLDOWN_TIME = 0.4
 
 local BG_COLOR = {36, 52, 85}
 local bgImage = love.graphics.newImage('img/bg/subtle_concrete.png')
 
 function Game:initialize(gridH, gridW)
   self.score = 0
-  self.revealCooldown = MAX_COOLDOWN_TIME --ticks
+  self.revealCooldown = 0
 
   self.gridW = gridW
   self.gridH = gridH
   self.grid = {}
 
-  self:start()
+  self:populateGrid()
 end
 
 function Game:start()
-  self:populateGrid()
+
 end
 
 function Game:stop()
