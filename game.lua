@@ -10,6 +10,7 @@ local bgImage = love.graphics.newImage('img/bg/subtle_concrete.png')
 function Game:initialize(gridH, gridW)
   self.score = 0
   self.revealCooldown = 0
+  self.started = false
 
   self.gridW = gridW
   self.gridH = gridH
@@ -19,7 +20,7 @@ function Game:initialize(gridH, gridW)
 end
 
 function Game:start()
-
+  self.started = true
 end
 
 function Game:stop()
@@ -67,7 +68,7 @@ end
 
 function love.mousepressed(x, y, button, istouch)
   -- use left click
-  if button == 1 then
+  if Ms.started and button == 1 then
     -- check which (if any) tile was clicked
     for _, row in pairs(Ms.grid) do
       for __, tile in pairs(row) do

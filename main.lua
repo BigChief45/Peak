@@ -7,7 +7,6 @@ function love.load()
 
   -- Start Memory sweep game 5x5
   Ms = Game:new(5, 5)
-  Ms:start()
 end
 
 function love.update(dt)
@@ -15,6 +14,7 @@ function love.update(dt)
 
   if Ms.revealCooldown >= 4 then
     Ms:revealGrid(false)
+    Ms:start()
   elseif Ms.revealCooldown >= 1 then
     Ms:revealGrid(true)
   end
