@@ -7,10 +7,15 @@ local TILE_PADDING = 5
 local BG_COLOR = {36, 52, 85}
 local bgImage = love.graphics.newImage('img/bg/subtle_concrete.png')
 
+local MAX_TRIES = 3
+
 function Game:initialize(gridH, gridW)
   self.score = 0
+  self.triesCount = MAX_TRIES
+
   self.revealTimer = 0
   self.started = false
+  self.finished = false
 
   self.gridW = gridW
   self.gridH = gridH
@@ -38,10 +43,19 @@ function Game:revealGrid(revealed)
 end
 
 function Game:populateGrid()
-  for x = 1, self.gridW do
-    self.grid[x] = {}
-    for y = 1, self.gridH do
-      self.grid[x][y] = Tile:new(randomBool())
+  -- Create only around 30% of tiles as answer tile
+  local totalAnswers = math.floor((self.gridH * self.gridW) * 0.30)
+
+  for y = 1, self.gridH do
+    self.grid[y] = {}
+    for x = 1, self.gridW do
+      if totalAnswers > 0 then
+        a = randomBool()
+        if a then totalAnswers = totalAnswers - 1 end
+      else
+        a = false
+      end
+      self.grid[y][x] = Tile:new(a)
     end
   end
 end
@@ -75,6 +89,13 @@ function love.mousepressed(x, y, button, istouch)
         if tile:isClicked(x, y) then
           Tile.static.selectTileSound:play()
           tile.revealed = true
+
+          if tile.answerTile then
+            self.score = self.score + 1
+          else
+            self.triesCount = self.triesCount - 1
+          end
+
           -- TODO: Check if this return exits both loops
           return
         end

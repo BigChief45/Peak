@@ -6,8 +6,8 @@ function love.load()
   math.randomseed(os.time())
   love.graphics.setBackgroundColor(0, 0, 51)
 
-  -- Start Memory sweep game
-  Ms = Game:new(math.random(5), 5)
+  -- Start Memory sweep game (height x width)
+  Ms = Game:new(math.random(3, 5), math.random(3, 5))
 end
 
 function love.update(dt)
