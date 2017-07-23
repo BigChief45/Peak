@@ -91,9 +91,9 @@ function love.mousepressed(x, y, button, istouch)
           tile.revealed = true
 
           if tile.answerTile then
-            self.score = self.score + 1
+            Ms.score = Ms.score + 1
           else
-            self.triesCount = self.triesCount - 1
+            Ms.triesCount = Ms.triesCount - 1
           end
 
           -- TODO: Check if this return exits both loops
