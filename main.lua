@@ -1,24 +1,31 @@
 class = require 'lib/middleclass'
+Stateful = require 'lib/stateful'
+
 require 'utils'
 require 'game'
+
+local game
 
 function love.load()
   love.graphics.setNewFont(15)
   math.randomseed(os.time())
-  love.graphics.setBackgroundColor(36, 52, 85)
 
-  -- Start Memory sweep game (height x width)
-  Ms = Game:new(math.random(3, 5), math.random(3, 5))
+  -- Launch Game starting at Main Menu
+  game = Game:new()
 end
 
 function love.update(dt)
-  Ms:update(dt)
+  game:update(dt)
 end
 
 function love.draw()
-  Ms:draw()
+  game:draw()
+end
+
+function love.keypressed(key, code)
+  game:keypressed(key, code)
 end
 
 function love.mousepressed(x, y, button, istouch)
-  Ms:mousepressed(x, y, button, istouch)
+  game:mousepressed(x, y, button, istouch)
 end
