@@ -102,20 +102,20 @@ function Game:update(dt)
   end
 end
 
-function love.mousepressed(x, y, button, istouch)
+function Game:mousepressed(x, y, button, istouch)
   -- use left click
-  if Ms.started and button == 1 then
+  if self.started and button == 1 then
     -- check which (if any) tile was clicked
-    for _, row in pairs(Ms.grid) do
+    for _, row in pairs(self.grid) do
       for __, tile in pairs(row) do
         if tile:isClicked(x, y) then
           Tile.static.selectTileSound:play()
           tile.revealed = true
 
           if tile.answerTile then
-            Ms.score = Ms.score + 1
+            self.score = self.score + 1
           else
-            Ms.triesCount = Ms.triesCount - 1
+            self.triesCount = self.triesCount - 1
           end
 
           -- TODO: Check if this return exits both loops

@@ -18,3 +18,7 @@ end
 function love.draw()
   Ms:draw()
 end
+
+function love.mousepressed(x, y, button, istouch)
+  Ms:mousepressed(x, y, button, istouch)
+end
