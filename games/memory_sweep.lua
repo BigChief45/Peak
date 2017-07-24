@@ -110,17 +110,19 @@ function MemorySweep:mousepressed(x, y, button, istouch)
     for _, row in pairs(self.grid) do
       for __, tile in pairs(row) do
         if tile:isClicked(x, y) then
-          Tile.static.selectTileSound:play()
-          tile.revealed = true
+          if not tile.revealed then
+            Tile.static.selectTileSound:play()
+            tile.revealed = true
 
-          if tile.answerTile then
-            self.score = self.score + 1
-          else
-            self.triesCount = self.triesCount - 1
+            if tile.answerTile then
+              self.score = self.score + 1
+            else
+              self.triesCount = self.triesCount - 1
+            end
+
+            -- TODO: Check if this return exits both loops
+            return
           end
-
-          -- TODO: Check if this return exits both loops
-          return
         end
       end
     end
