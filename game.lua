@@ -89,6 +89,19 @@ function Game:draw()
   end
 end
 
+function Game:update(dt)
+  self.revealTimer = self.revealTimer + dt
+
+  if not self.started then
+    if self.revealTimer >= 4 then
+      self:revealGrid(false)
+      self:start()
+    elseif self.revealTimer >= 1 then
+      self:revealGrid(true)
+    end
+  end
+end
+
 function love.mousepressed(x, y, button, istouch)
   -- use left click
   if Ms.started and button == 1 then

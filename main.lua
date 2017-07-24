@@ -12,16 +12,7 @@ function love.load()
 end
 
 function love.update(dt)
-  Ms.revealTimer = Ms.revealTimer + dt
-
-  if not Ms.started then
-    if Ms.revealTimer >= 4 then
-      Ms:revealGrid(false)
-      Ms:start()
-    elseif Ms.revealTimer >= 1 then
-      Ms:revealGrid(true)
-    end
-  end
+  Ms:update(dt)
 end
 
 function love.draw()
