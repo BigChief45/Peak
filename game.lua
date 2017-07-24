@@ -1,6 +1,6 @@
 Game = class('Game'):include(Stateful)
 
-require 'menu'
+require 'menu/menu'
 require 'games/memory_sweep'
 
 function Game:initialize()
