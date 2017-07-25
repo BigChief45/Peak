@@ -23,7 +23,7 @@ function Menu:enteredState()
 end
 
 function Menu:update(dt)
-  Suit.layout:reset(250, 100)
+  Suit.layout:reset(250, 150)
   Suit.layout:padding(10, 10)
 
   for i=1, #GAMES do
@@ -34,6 +34,11 @@ function Menu:update(dt)
 end
 
 function Menu:draw()
+  -- Draw title
+  love.graphics.setNewFont(70)
+  love.graphics.print('Peak', 325, 10)
+
+  love.graphics.setNewFont(15)
   Suit.draw()
 end
 
