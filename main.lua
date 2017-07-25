@@ -1,5 +1,6 @@
 class = require 'lib/middleclass'
 Stateful = require 'lib/stateful'
+Suit = require 'lib/suit'
 
 require 'utils'
 require 'game'

@@ -1,4 +1,4 @@
-Suit = require 'lib/suit'
+require 'games/states/countdown'
 
 local Menu = Game:addState('Menu')
 
@@ -18,8 +18,6 @@ local GAMES = {
 
 function Menu:enteredState()
   love.graphics.setBackgroundColor(BG_COLOR)
-
-  self.gameButtons = {}
 end
 
 function Menu:update(dt)

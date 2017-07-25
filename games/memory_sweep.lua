@@ -12,6 +12,8 @@ local GRID_BG_COLOR = {0, 0, 51}
 local MAX_TRIES = 3
 
 function MemorySweep:enteredState()
+  self:pushState('Countdown')
+
   self.score = 0
   self.triesCount = MAX_TRIES
 
@@ -26,6 +28,9 @@ function MemorySweep:enteredState()
   self.topbar = Topbar:new(self)
 
   self:populateGrid()
+end
+
+function MemorySweep:exitedState()
 end
 
 function MemorySweep:start()
