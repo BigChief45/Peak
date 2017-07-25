@@ -1,4 +1,3 @@
-require 'menu/menu_button'
 Suit = require 'lib/suit'
 
 local Menu = Game:addState('Menu')
@@ -39,10 +38,4 @@ function Menu:draw()
 end
 
 function Menu:keypressed(key, code)
-end
-
-function Menu:mousepressed(x, y, button, isTouch)
-  if button == 1 then
-
-  end
 end
