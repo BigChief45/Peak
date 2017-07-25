@@ -11,7 +11,7 @@ local GRID_BG_COLOR = {0, 0, 51}
 
 local MAX_TRIES = 3
 
-function MemorySweep:enteredState(gridH, gridW)
+function MemorySweep:enteredState()
   self.score = 0
   self.triesCount = MAX_TRIES
 
@@ -19,8 +19,8 @@ function MemorySweep:enteredState(gridH, gridW)
   self.started = false
   self.finished = false
 
-  self.gridW = gridW
-  self.gridH = gridH
+  self.gridW = math.random(3, 5)
+  self.gridH = math.random(3, 5)
   self.grid = {}
 
   self.topbar = Topbar:new(self)
