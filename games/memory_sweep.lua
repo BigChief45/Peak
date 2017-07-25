@@ -6,7 +6,7 @@ local MemorySweep = Game:addState('MemorySweep')
 local TILE_PADDING = 5
 
 local BG_COLOR = {36, 52, 85}
-local bgImage = love.graphics.newImage('img/bg/subtle_concrete.png')
+local bgImage = love.graphics.newImage('assets/images/bg/subtle_concrete.png')
 local GRID_BG_COLOR = {0, 0, 51}
 
 local MAX_TRIES = 3
