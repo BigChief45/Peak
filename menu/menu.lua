@@ -29,7 +29,7 @@ function Menu:update(dt)
 
   for i=1, #GAMES do
     if Suit.Button(GAMES[i], Suit.layout:row(300, 80)).hit then
-      self:gotoState('MemorySweep')
+      self:gotoState(trimStr(GAMES[i]))
     end
   end
 end
