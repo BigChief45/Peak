@@ -28,3 +28,6 @@ function Countdown:draw()
 
   resetFont()
 end
+
+function Countdown:keypressed(key, code)
+end

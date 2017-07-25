@@ -17,7 +17,6 @@ local GAMES = {
 }
 
 function Menu:enteredState()
-  love.graphics.setBackgroundColor(BG_COLOR)
 end
 
 function Menu:update(dt)
@@ -32,6 +31,8 @@ function Menu:update(dt)
 end
 
 function Menu:draw()
+  love.graphics.setBackgroundColor(BG_COLOR)
+
   -- Draw title
   love.graphics.setNewFont(70)
   love.graphics.print('Peak', 325, 10)
