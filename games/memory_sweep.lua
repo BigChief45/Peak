@@ -1,5 +1,5 @@
-require 'topbar'
-require 'tile'
+require 'games/components/topbar'
+require 'games/components/tile'
 
 local MemorySweep = Game:addState('MemorySweep')
 
