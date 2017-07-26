@@ -12,6 +12,7 @@ local GRID_BG_COLOR = {0, 0, 51}
 local MAX_TRIES = 3
 
 function MemorySweep:enteredState()
+  love.window.setTitle(love.window.getTitle() .. ' - Memory Sweep')
   self:pushState('Countdown')
 
   self.score = 0
