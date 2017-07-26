@@ -26,6 +26,9 @@ function MemorySweep:enteredState()
 
   self.topbar = Topbar:new(self)
 
+  -- Create only around 30% of tiles as answer tile
+  self.totalAnswers = math.floor((self.gridH * self.gridW) * 0.30)
+
   self:populateGrid()
 end
 
@@ -36,8 +39,8 @@ function MemorySweep:start()
   self.started = true
 end
 
-function MemorySweep:stop()
-  self:gotoState('GameOver')
+function MemorySweep:stop(gameWon)
+  self:gotoState('GameOver', gameWon)
 end
 
 function MemorySweep:revealGrid(revealed)
@@ -52,9 +55,7 @@ function MemorySweep:revealGrid(revealed)
 end
 
 function MemorySweep:populateGrid()
-  -- Create only around 30% of tiles as answer tile
-  local totalAnswers = math.floor((self.gridH * self.gridW) * 0.30)
-
+  local totalAnswers = self.totalAnswers
   for y = 1, self.gridH do
     self.grid[y] = {}
     for x = 1, self.gridW do
@@ -107,9 +108,12 @@ function MemorySweep:update(dt)
     end
   end
 
+  -- Check if all answers have been found or
   -- Check if user is out of guesses
-  if self.triesCount <= 0 then
-    self:stop()
+  if self.score == self.totalAnswers then
+    self:stop(true)
+  elseif self.triesCount <= 0 then
+    self:stop(false)
   end
 end
 

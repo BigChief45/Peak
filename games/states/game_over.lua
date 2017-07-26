@@ -2,6 +2,18 @@ local GameOver = Game:addState('GameOver')
 
 local BG_COLOR = {36, 52, 85}
 
+local msg
+
+function GameOver:enteredState(gameWon)
+  self.gameWon = gameWon
+
+  if gameWon then
+    msg = 'Congratulations'
+  else
+    msg = 'Game Over'
+  end
+end
+
 function GameOver:update()
   Suit.layout:reset(245, 260)
   Suit.layout:padding(10, 10)
@@ -16,8 +28,11 @@ function GameOver:draw()
 
   resetColor()
   love.graphics.setNewFont(60)
-  love.graphics.print('Game Over', 225, 180)
+  love.graphics.print(msg, 225, 180)
   resetFont()
 
   Suit.draw()
+end
+
+function GameOver:keypressed(key, code)
 end
