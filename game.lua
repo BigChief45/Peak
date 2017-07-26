@@ -2,6 +2,7 @@ Game = class('Game'):include(Stateful)
 
 require 'menu/menu'
 require 'games/states/pause'
+require 'games/states/game_over'
 
 require 'games/memory_sweep'
 

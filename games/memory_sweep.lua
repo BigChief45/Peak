@@ -19,7 +19,6 @@ function MemorySweep:enteredState()
 
   self.revealTimer = 0
   self.started = false
-  self.finished = false
 
   self.gridW = math.random(3, 5)
   self.gridH = math.random(3, 5)
@@ -38,6 +37,7 @@ function MemorySweep:start()
 end
 
 function MemorySweep:stop()
+  self:gotoState('GameOver')
 end
 
 function MemorySweep:revealGrid(revealed)
@@ -105,6 +105,11 @@ function MemorySweep:update(dt)
     elseif self.revealTimer >= 1 then
       self:revealGrid(true)
     end
+  end
+
+  -- Check if user is out of guesses
+  if self.triesCount <= 0 then
+    self:stop()
   end
 end
 
