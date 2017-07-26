@@ -1,5 +1,15 @@
 This is a personal just-for-fun project for learning [Lua](http://www.lua.org/) and the [LÖVE](https://love2d.org/) game engine. Basically I just try to implement many games from [Peak](http://www.peak.net/), a mobile "brain training" app.
 
+## Available Games
+
+The following are games that have been implemented so far.
+
+### Memory Sweep
+<div align="center">![Memory Sweep](screenshots/games/memory_sweep.jpg)</div>
+
+Memorize the highlighted tiles and remember their position when gone.
+
+
 ## Dependencies
 
 The following libraries were used:
