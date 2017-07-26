@@ -5,9 +5,9 @@ This is a personal just-for-fun project for learning [Lua](http://www.lua.org/) 
 The following are games that have been implemented so far.
 
 ### Memory Sweep
-<div align="center">![Memory Sweep](screenshots/games/memory_sweep.jpg)</div>
+![Memory Sweep](screenshots/games/memory_sweep.jpg)
 
-Memorize the highlighted tiles and remember their position when gone.
+<p align="center">Memorize the highlighted tiles and remember their position when gone.</p>
 
 
 ## Dependencies
